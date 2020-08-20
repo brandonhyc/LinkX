@@ -1,6 +1,7 @@
 @import "./styles/Header.css";
 @import "./styles/Footer.css";
 @import "./styles/Main.css";
+@import "./styles/SatSettings.css";
 
 .App {
   text-align: center;
