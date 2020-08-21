@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import starlinkLogo  from '../assets/images/Starlink_Logo.svg';
+import starlinkLogo  from '../assets/images/starlink_white.png';
 
 import { Layout, Menu } from 'antd';
 
@@ -9,7 +9,7 @@ export default class AppHeader extends Component {
     render() {
         return (
             <Header className="header">
-                <div className="logo"> 
+                <div className="text-right"> 
                     <img src={ starlinkLogo } className="App-logo" alt="logo" />
                 </div>
                 {/* <div className="App-logo">
@@ -19,9 +19,6 @@ export default class AppHeader extends Component {
                     </p>
                 </div> */}
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                <Menu.Item key="1">nav 1</Menu.Item>
-                <Menu.Item key="2">nav 2</Menu.Item>
-                <Menu.Item key="3">nav 3</Menu.Item>
                 </Menu>
             </Header>
         )

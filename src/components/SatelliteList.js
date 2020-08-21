@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, List, Avatar, Checkbox, Spin } from 'antd';
 
-import Satellite from "../assets/images/satellite.svg";
+import Satellite from "../assets/images/satellite_color.svg";
 
 export default class SatelliteList extends Component {
     render() {
@@ -10,26 +10,28 @@ export default class SatelliteList extends Component {
 
         return (
             <div className="sat-list-box">
-                <Button type="primary"
-                        size="large">Track on the map</Button>
+                <Button type="primary" onClick={ this.props.onClickBack }
+                        >Back</Button>
+                <Button className="ml-3" type="primary"
+                        >Track on the map</Button>
                 <hr/>
-                    <List
-                        itemLayout="horizontal"
-                        size="small"
-                        dataSource={ satList }
-                        renderItem={item => (
-                            <List.Item
-                                actions={[<Checkbox dataInfo={item} onChange={this.onChange}/>]}
-                            >
-                                <List.Item.Meta
-                                    avatar={<Avatar size={50} src={Satellite} />}
-                                    title={<p>{item.satname}</p>}
-                                    description={`Launch Date: ${item.launchDate}`}
-                                />
-    
-                            </List.Item>
-                        )}
-                    />
+                <List
+                    itemLayout="horizontal"
+                    size="small"
+                    dataSource={ satList }
+                    renderItem={item => (
+                        <List.Item
+                            actions={[<Checkbox dataInfo={item} onChange={this.onChange}/>]}
+                        >
+                            <List.Item.Meta
+                                avatar={<Avatar size={50} src={Satellite} />}
+                                title={<p>{item.satname}</p>}
+                                description={`Launch Date: ${item.launchDate}`}
+                            />
+
+                        </List.Item>
+                    )}
+                />
             </div>
         );
     }

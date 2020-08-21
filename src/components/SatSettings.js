@@ -45,6 +45,15 @@ export default class SatSettings extends Component {
             <div className="sat-setting">
                 <div className="loc-setting">
                     <div className="setting-list">
+                        <div className="show-nearby">
+                            <Button
+                                type="primary"
+                                size="large"
+                                onClick={ this.showSatellite }
+                            >
+                                Find Nearby Satellites
+                            </Button>
+                        </div>
                         <Divider orientation="left">From Location</Divider>
                         <div className="row pt-2">
                             <label class="col-4 text-right" htmlFor="longitude">Longitude: </label>
@@ -94,17 +103,6 @@ export default class SatSettings extends Component {
                             />
                         </div>
                     </div>
-
-                    <div className="show-nearby">
-                        <Button
-                            type="primary"
-                            size="large"
-                            onClick={ this.showSatellite }
-                        >
-                            Find Nearby Satellites
-                        </Button>
-                    </div>
-
                 </div>
             </div>
         )
