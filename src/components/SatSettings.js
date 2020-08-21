@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { InputNumber } from 'antd';
+import { InputNumber, Button, Divider } from 'antd';
 
 export default class SatSettings extends Component {
     constructor(props) {
@@ -7,29 +7,37 @@ export default class SatSettings extends Component {
         this.state = {
             observerLong: 0,
             observerLat: 0,
-            observerElevation: 0,
+            observerAlt: 0,
+            radius: 90,
         }
     }
 
     onChangeLongitude = (value) => {
-        console.log('changed', value);
         this.setState({
-            observerLong: value
+            observerLong: value,
         });
     }
 
     onChangeLatitude = (value) => {
-        console.log('changed', value);
         this.setState({
-            observerLat: value
+            observerLat: value,
         });
     }
 
-    onChangeEle = (value) => {
-        console.log('changed', value);
+    onChangeAlt = (value) => {
         this.setState({
-            observerElevation: value
+            observerAlt: value,
         });
+    }
+
+    onChangeRadius = (value) => {
+        this.setState({
+            radius: value
+        })
+    }
+
+    showSatellite = () => {
+        this.props.onConfirm(this.state);
     }
 
     render() {
@@ -37,6 +45,7 @@ export default class SatSettings extends Component {
             <div className="sat-setting">
                 <div className="loc-setting">
                     <div className="setting-list">
+                        <Divider orientation="left">From Location</Divider>
                         <div className="row pt-2">
                             <label class="col-4 text-right" htmlFor="longitude">Longitude: </label>
                             <div className="col-6">
@@ -60,17 +69,42 @@ export default class SatSettings extends Component {
                             </div>
                         </div>
                         <div className="row pt-2">
-                            <label class="col-4 text-right" htmlFor="elevation">Elevation(meters): </label>
+                            <label class="col-4 text-right" htmlFor="altitude">Altitude(meters): </label>
                             <div className="col-6">
-                                <InputNumber name="elevation" 
+                                <InputNumber name="altitude" 
                                     min={-413} max={8850} 
                                     defaultValue={0} 
                                     className="d-inline-block w-100"
-                                    onChange={ this.onChangeEle } 
+                                    onChange={ this.onChangeAlt } 
                                 />
                             </div>
                         </div>
                     </div>
+
+                    <Divider orientation="left">From Location</Divider>
+                    <div className="setting-list">
+                        <div className="list-item">
+                            <label>Search Radius </label>
+                            <InputNumber
+                                min={0}
+                                max={90}
+                                defaultValue={0}
+                                style={{margin: "0 2px"}}
+                                onChange={ this.onChangeRadius }
+                            />
+                        </div>
+                    </div>
+
+                    <div className="show-nearby">
+                        <Button
+                            type="primary"
+                            size="large"
+                            onClick={ this.showSatellite }
+                        >
+                            Find Nearby Satellites
+                        </Button>
+                    </div>
+
                 </div>
             </div>
         )
