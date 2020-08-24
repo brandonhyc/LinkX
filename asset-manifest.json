@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/my-app/static/css/main.fa5954e2.chunk.css",
-    "main.js": "/my-app/static/js/main.5b972e34.chunk.js",
-    "main.js.map": "/my-app/static/js/main.5b972e34.chunk.js.map",
-    "runtime-main.js": "/my-app/static/js/runtime-main.87e571ea.js",
-    "runtime-main.js.map": "/my-app/static/js/runtime-main.87e571ea.js.map",
-    "static/css/2.a15ce56a.chunk.css": "/my-app/static/css/2.a15ce56a.chunk.css",
-    "static/js/2.2ee6ef21.chunk.js": "/my-app/static/js/2.2ee6ef21.chunk.js",
-    "static/js/2.2ee6ef21.chunk.js.map": "/my-app/static/js/2.2ee6ef21.chunk.js.map",
-    "index.html": "/my-app/index.html",
-    "precache-manifest.54b4bee0713bc1627bb92ce6bb2f0acf.js": "/my-app/precache-manifest.54b4bee0713bc1627bb92ce6bb2f0acf.js",
-    "service-worker.js": "/my-app/service-worker.js",
-    "static/css/2.a15ce56a.chunk.css.map": "/my-app/static/css/2.a15ce56a.chunk.css.map",
-    "static/css/main.fa5954e2.chunk.css.map": "/my-app/static/css/main.fa5954e2.chunk.css.map",
-    "static/js/2.2ee6ef21.chunk.js.LICENSE.txt": "/my-app/static/js/2.2ee6ef21.chunk.js.LICENSE.txt",
-    "static/media/satellite_color.svg": "/my-app/static/media/satellite_color.0abd3f31.svg",
-    "static/media/space_background.jpg": "/my-app/static/media/space_background.a6530d49.jpg",
-    "static/media/starlink_white.png": "/my-app/static/media/starlink_white.d0336c4f.png"
+    "main.css": "/LinkX/static/css/main.fa5954e2.chunk.css",
+    "main.js": "/LinkX/static/js/main.39906b40.chunk.js",
+    "main.js.map": "/LinkX/static/js/main.39906b40.chunk.js.map",
+    "runtime-main.js": "/LinkX/static/js/runtime-main.77a42f3d.js",
+    "runtime-main.js.map": "/LinkX/static/js/runtime-main.77a42f3d.js.map",
+    "static/css/2.a15ce56a.chunk.css": "/LinkX/static/css/2.a15ce56a.chunk.css",
+    "static/js/2.4087fe79.chunk.js": "/LinkX/static/js/2.4087fe79.chunk.js",
+    "static/js/2.4087fe79.chunk.js.map": "/LinkX/static/js/2.4087fe79.chunk.js.map",
+    "index.html": "/LinkX/index.html",
+    "precache-manifest.14bfe35cbe7628d57fdf535e746272fa.js": "/LinkX/precache-manifest.14bfe35cbe7628d57fdf535e746272fa.js",
+    "service-worker.js": "/LinkX/service-worker.js",
+    "static/css/2.a15ce56a.chunk.css.map": "/LinkX/static/css/2.a15ce56a.chunk.css.map",
+    "static/css/main.fa5954e2.chunk.css.map": "/LinkX/static/css/main.fa5954e2.chunk.css.map",
+    "static/js/2.4087fe79.chunk.js.LICENSE.txt": "/LinkX/static/js/2.4087fe79.chunk.js.LICENSE.txt",
+    "static/media/satellite_color.svg": "/LinkX/static/media/satellite_color.0abd3f31.svg",
+    "static/media/space_background.jpg": "/LinkX/static/media/space_background.a6530d49.jpg",
+    "static/media/starlink_white.png": "/LinkX/static/media/starlink_white.d0336c4f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.87e571ea.js",
+    "static/js/runtime-main.77a42f3d.js",
     "static/css/2.a15ce56a.chunk.css",
-    "static/js/2.2ee6ef21.chunk.js",
+    "static/js/2.4087fe79.chunk.js",
     "static/css/main.fa5954e2.chunk.css",
-    "static/js/main.5b972e34.chunk.js"
+    "static/js/main.39906b40.chunk.js"
   ]
 }
