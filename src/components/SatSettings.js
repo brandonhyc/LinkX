@@ -90,17 +90,19 @@ export default class SatSettings extends Component {
                         </div>
                     </div>
 
-                    <Divider orientation="left">From Location</Divider>
+                    <Divider orientation="left">Range</Divider>
                     <div className="setting-list">
                         <div className="list-item">
-                            <label>Search Radius </label>
-                            <InputNumber
-                                min={0}
-                                max={90}
-                                defaultValue={0}
-                                style={{margin: "0 2px"}}
-                                onChange={ this.onChangeRadius }
-                            />
+                            <div className="row pt-2">
+                                <label className="col-4 text-right"> Radius: </label>
+                                <div className="col-6">
+                                    <InputNumber min={0} max={90}
+                                        defaultValue={0}
+                                        className="d-inline-block w-100"
+                                        onChange={ this.onChangeRadius }
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

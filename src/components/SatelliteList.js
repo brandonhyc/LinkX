@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, List, Avatar, Checkbox } from 'antd';
+import { Button, List, Avatar, Checkbox, InputNumber } from 'antd';
 
 import Satellite from "../assets/images/satellite_color.svg";
 
@@ -8,7 +8,7 @@ export default class SatelliteList extends Component {
     constructor() {
         super();
         this.state = {
-            duration: 0,
+            duration: 60,
         }
     }
 
@@ -35,6 +35,18 @@ export default class SatelliteList extends Component {
                         disabled={ this.props.disableTrack }
                         onClick={ () => this.props.trackOnclick(this.state.duration) }
                 >Track on the map</Button>
+
+                <div className="pt-3">
+                    <label>Track Duration </label>
+                    <InputNumber
+                        min={0}
+                        max={90}
+                        defaultValue={0}
+                        style={{margin: "0 2px"}}
+                        onChange={this.onChangeDuration}
+                    />
+                </div>
+
                 <hr/>
                 <List
                     itemLayout="horizontal"
@@ -47,7 +59,7 @@ export default class SatelliteList extends Component {
                             <List.Item.Meta
                                 avatar={<Avatar size={50} src={Satellite} />}
                                 title={<p>{item.satname}</p>}
-                                description={`Launch Date: ${item.launchDate}`}
+                                description={`Launched: ${item.launchDate}`}
                             />
 
                         </List.Item>

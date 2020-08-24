@@ -7,15 +7,19 @@ import { NEARBY_SATELLITE, STARLINK_CATEGORY, SAT_API_KEY, SATELLITE_POSITION_UR
 
 import { Layout, Card, Collapse } from 'antd';
 import Axios from 'axios';
-import WorldMap from '../components/WorldMap';
 
 import spaceBackground from '../assets/images/space_background.jpg';
+import Globe from '../components/Globe';
 
 const { Content, Sider } = Layout;
 const { Panel } = Collapse;
 
 const SETTINGS_PANEL = '1';
 const LIST_PANEL = '2';
+const MINUTE = 60;
+const MARKER_SIZE = 1;
+const TRACE_COLORS = [ '#39FFAE', '#131147', '#0946A7', '#6749E7',];
+const INTERVAL = 100;
 
 export default class Main extends Component {
     constructor(){
@@ -26,23 +30,24 @@ export default class Main extends Component {
             loadingSatPositions: false,
             setting: undefined,
             selected: [],
+            markers: [],
         }
     }  
 
     trackOnClick = (duration) => {
         const { observerLat, observerLong, observerAlt } = this.state.setting;
-        const endTime = duration * 60;
+        duration = duration * MINUTE;
         this.setState({ loadingSatPositions: true });
-        const urls = this.state.selected.map( sat => {
+        const statelliteFetches = this.state.selected.map( sat => {
             const { satid } = sat;
-            const url = `${SATELLITE_POSITION_URL}/${satid}/${observerLat}/${observerLong}/${observerAlt}/${endTime}/&apiKey=${SAT_API_KEY}`;
+            const url = `${SATELLITE_POSITION_URL}/${satid}/${observerLat}/${observerLong}/${observerAlt}/${duration}/&apiKey=${SAT_API_KEY}`;
             return Axios.get(url);
         })
 
-        Axios.all(urls)
+        Axios.all(statelliteFetches)
         .then(
-          Axios.spread((...args) => {
-              return args.map(item => item.data);
+          Axios.spread((...result) => {
+              return result.map(item => item.data);
           })
         )
         .then( res => {
@@ -58,7 +63,6 @@ export default class Main extends Component {
     }
 
     addOrRemove = (item) => {
-        console.log(this.state.selected);
         let { selected : previous } = this.state;
         let next = previous.includes(item) 
                  ? previous.filter(el => el.satid !== item.satid)
@@ -85,7 +89,7 @@ export default class Main extends Component {
             observerLong, 
             observerAlt, 
             radius,
-            } = setting;
+        } = setting;
 
         const url = `${NEARBY_SATELLITE}/${observerLat}/${observerLong}/${observerAlt}/${radius}/${STARLINK_CATEGORY}/&apiKey=${SAT_API_KEY}`;
   
@@ -108,7 +112,27 @@ export default class Main extends Component {
     }
 
     showTrace = () => {
-        console.log("start tracking");
+        const satellies = this.state.satPositions;
+        satellies.forEach( (sat, satIndex) => {
+            this.setState({ markers : [
+                ...this.state.markers,
+                ...sat.positions
+                    .map((pos, index) => { return {
+                        name: sat.info.satname,
+                        id: sat.info.satid + '-' + index,
+                        color: TRACE_COLORS[satIndex],
+                        coordinates: [ pos.satlongitude, pos.satlatitude ],
+                        value: MARKER_SIZE, 
+
+                    }}
+                    ).reduce((acc, cur, index) => { 
+                        if (index % INTERVAL == 0) {
+                            acc.unshift(cur);
+                        }
+                        return acc;
+                    }, []),
+            ]});
+        });
     }
 
     render() {
@@ -125,12 +149,12 @@ export default class Main extends Component {
                 >
                     
                       <Collapse activeKey={ this.state.activePanel }>
-                        <Panel header="This is panel header 1" key="1">
+                        <Panel header="Location Settings" key="1">
                             <Card bordered={false}>
                                 <SatSettings onConfirm={ this.showNearbySatellite } />
                             </Card>
                         </Panel>
-                        <Panel header="This is panel header 2" key="2">
+                        <Panel header="Near Satellites" key="2">
                             <Card bordered={false} loading={ this.state.loadingSatellites }>
                                 <SatelliteList class="overflow-auto" 
                                     onClickBack={ () => this.openPanel([ SETTINGS_PANEL ]) }
@@ -153,7 +177,7 @@ export default class Main extends Component {
                             
                         }}
                     >
-                        <WorldMap />
+                    <Globe markers={ this.state.markers }/>
 
                     </Content>
                     </div>
