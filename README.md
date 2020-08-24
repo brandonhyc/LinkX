@@ -1,4 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# LinkX - SpaceX Satellites Tracker
+
+# What is Cool in LinkX
+Select any satellite orbiting the Earth and check where is located now. LinkX will visualize the track for you!
+
+## What is StarLink
+Starlink is a satellite constellation being constructed by SpaceX to provide satellite Internet access. The constellation will consist of thousands of mass-produced small satellites in low Earth orbit, working in combination with ground transceivers. 
+
+Enjoy!
+
+![](demo.gif)
 
 ## Available Scripts
 
